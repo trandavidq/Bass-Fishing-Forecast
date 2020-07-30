@@ -1,0 +1,12 @@
+{% extends "base.html"%}
+{% block title%}Bass forecast{% endblock %}
+{% block content%}
+<h1>Forecast:</h1>
+
+<ul>
+    <li>Temp: {{tem}} degrees F</li>
+    <li>Wind: {{wind}} mph</li>
+    <li>Condition: {{cond}}</li>
+    <li>Air Pressure: {{baro}} kPa</li>
+    <li>Fishing rating: {{rating}} / 10</li>
+</ul>{% endblock %}
