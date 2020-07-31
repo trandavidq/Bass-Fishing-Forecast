@@ -13,7 +13,7 @@ def getWeather(zipcode):
     temp = round(((float(data['main']['temp'])-273.15) *(9/5)+32),2)
     windSpeed = round(float(data['wind']['speed']) * 2.23694,2)
     condition = data['weather'][0]['description']
-    baroPressure = float(data['main']['pressure'])
+    baroPressure = round(float(data['main']['pressure']) / 33.86,2)
     print(url)
     return [temp,windSpeed,condition,baroPressure]
 
@@ -26,13 +26,16 @@ def fish_forecast(zipcode):
     baroPressure = float(weatherData[3])
 
     if(temp<=70 or temp>=85):
-        rating-=3
+        rating-=4
     
     if(windSpeed<= 4 or windSpeed>=12):
         rating -=2
     
     if(("storm" in condition) or ("rain" in condition)):
-        rating-=8
+        rating-=4
+    
+    if(baroPressure <29.6 or baroPressure>30.5):
+        rating-=2
     if(rating<0):
         rating=0
     
