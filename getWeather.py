@@ -10,12 +10,13 @@ def getWeather(zipcode):
     data=response.json()
 
     #parameters that affect bass: ,temp,weather condition,pressure,windspeed
+    cityName = data['name']
     temp = round(((float(data['main']['temp'])-273.15) *(9/5)+32),2)
     windSpeed = round(float(data['wind']['speed']) * 2.23694,2)
     condition = data['weather'][0]['description']
     baroPressure = round(float(data['main']['pressure']) / 33.86,2)
     print(url)
-    return [temp,windSpeed,condition,baroPressure]
+    return [temp,windSpeed,condition,baroPressure, cityName]
 
 def fish_forecast(zipcode):
     rating = 10

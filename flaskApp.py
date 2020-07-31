@@ -7,15 +7,17 @@ app = Flask(__name__)
 
 @app.route('/',methods = ["POST","GET"] )
 def home():
-    global temp, windSpeed, condition, baroPressure, fishRating
+    global temp, windSpeed, condition, baroPressure, fishRating, cityName
     if(request.method == "POST"):
         try:
             zip = request.form["zipCode"]
+            
             weatherData = getWeather.getWeather(zip)
             temp = weatherData[0]
             windSpeed = weatherData[1]
             condition = weatherData[2]
             baroPressure = weatherData[3]
+            cityName = weatherData[4]
             fishRating = getWeather.fish_forecast(zip)
             return redirect(url_for("results"))
         except:
@@ -26,7 +28,7 @@ def home():
 
 @app.route('/results', methods = ["POST","GET"])
 def results():
-    return render_template("results.html", tem= temp, wind = windSpeed, cond = condition, baro = baroPressure, rating = fishRating)
+    return render_template("results.html", tem= temp, wind = windSpeed, cond = condition, baro = baroPressure, rating = fishRating, city= cityName)
 
 @app.route('/404', methods = ["POST","GET"])
 def error():
