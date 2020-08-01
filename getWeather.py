@@ -29,7 +29,7 @@ def fish_forecast(zipcode):
     if(temp<=70 or temp>=85):
         rating-=4
     
-    if(windSpeed<= 4 or windSpeed>=12):
+    if(windSpeed<= 4 or windSpeed>=15):
         rating -=2
     
     if(("storm" in condition) or ("rain" in condition)):

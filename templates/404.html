@@ -1,4 +1,13 @@
 {% extends "base.html"%}
 {% block title%}Bass forecast{% endblock %}
 {% block content%}
-<h1>ERROR 404: Please enter valid zip code</h1>{% endblock %}
+<h1>ERROR 404: Please enter valid zip code:</h1>
+<br>
+<div class="fixed-center">
+    <form method = "POST" >
+        <h1>Bass Forecast</h1>
+        <p>Enter ZIP for another fishing forecast</p>
+        <p><input type="text" name = "zipCode"></p>
+        <p><input type="submit" value="submit"></p>
+</form></div>
+{% endblock %}
